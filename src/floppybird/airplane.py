@@ -6,8 +6,8 @@ class Airplane:
         self.defaultY = y
         self.gravity = gravity
         self.jump = jump
-        self.width = 60
-        self.height = 35
+        self.core = (28, 14, 50, 28)
+        self.bottom = 600
 
     def init(self):
         self.x = self.defaultX
@@ -27,19 +27,23 @@ class Airplane:
         return self.x, self.y
 
     def isUpCrash(self, x1, x2, y):
-        if self.x + self.width < x1:
+        if self.y < 0:
+            return True
+        if self.x + self.core[2] < x1:
             return False
-        if self.x > x2:
+        if self.x + self.core[0] > x2:
             return False
-        if self.y + 10 > y:
+        if self.y + self.core[1] > y:
             return False
         return True
 
     def isDownCrash(self, x1, x2, y):
-        if self.x + self.width < x1:
+        if self.y + self.core[3] > self.bottom:
+            return True
+        if self.x + self.core[2] < x1:
             return False
-        if self.x > x2:
+        if self.x + self.core[0] > x2:
             return False
-        if self.y + self.height < y:
+        if self.y + self.core[3] < y:
             return False
         return True

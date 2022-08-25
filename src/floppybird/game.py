@@ -21,7 +21,7 @@ def main():
                 if event.key == pygame.K_SPACE:
                     floppyBird.move_up()
                 elif event.key == pygame.K_p:
-                    floppyBird.reume()
+                    floppyBird.resume()
                 elif event.key == pygame.K_s:
                     floppyBird.start()
 

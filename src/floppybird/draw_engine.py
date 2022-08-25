@@ -20,7 +20,7 @@ class DrawEngine:
         self.canvas.blit(self.background, (0, 0))
 
     def __drawScore(self):
-        socreImage = self.sysfont.render(f"{self.parent.score()}".zfill(9), True, (255, 255, 255))
+        socreImage = self.sysfont.render(f"{self.parent.get_score()}".zfill(9), True, (255, 255, 255))
         self.canvas.blit(socreImage, (680, 10))
 
     def __drawMessage(self):
@@ -41,6 +41,6 @@ class DrawEngine:
     def drawStart(self):
         self.draw()
         self.canvas.blit(self.startImage, (250, 100))
-        socreImage = self.bigfont.render(f"{self.parent.prevScore()}".zfill(9), True, (0, 0, 0))
+        socreImage = self.bigfont.render(f"{self.parent.get_prev_score()}".zfill(9), True, (0, 0, 0))
         pygame.draw.rect(self.canvas, (255, 201, 14), (250, 300, 300, 100))
         self.canvas.blit(socreImage, (270, 330))
