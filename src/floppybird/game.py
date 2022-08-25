@@ -10,7 +10,7 @@ def initGame():
 
 def main():
     canvas, fps_clock = initGame()
-    floppyBird = PaperPlane(canvas)
+    floppy_bird = PaperPlane(canvas)
 
     while True:
         for event in pygame.event.get():
@@ -19,14 +19,14 @@ def main():
                 return
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    floppyBird.move_up()
+                    floppy_bird.move_up()
                 elif event.key == pygame.K_p:
-                    floppyBird.resume()
+                    floppy_bird.resume()
                 elif event.key == pygame.K_s:
-                    floppyBird.start()
+                    floppy_bird.start()
 
-        floppyBird.move()
-        floppyBird.draw()
+        floppy_bird.move()
+        floppy_bird.draw()
         pygame.display.update()
         fps_clock.tick(30)
 

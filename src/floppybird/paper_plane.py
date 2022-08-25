@@ -56,12 +56,12 @@ class PaperPlane:
         if self.isPlayState():
             self.drawEngine.draw()
         else:
-            self.drawEngine.drawStart()
+            self.drawEngine.draw_start_button()
 
     def isAlive(self):
         for p in self.pillars.get():
-            if self.plane.isUpCrash(p[0], p[0] + 60, 60 + p[1] * 60) or \
-               self.plane.isDownCrash(p[0], p[0] + 60, 540 - p[2] * 60):
+            if self.plane.is_up_crash(p[0], p[0] + 60, 60 + p[1] * 60) or \
+               self.plane.is_down_crash(p[0], p[0] + 60, 540 - p[2] * 60):
                  self.game_state = GAME_OVER_STATE
                  return False
         return True

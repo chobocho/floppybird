@@ -1,21 +1,22 @@
 import pygame
 
+
 class AirplaneDrawEngine:
     def __init__(self, canvas, bird):
         self.canvas = canvas
         self.plane = bird
-        self.planeImages = []
-        self.__load_image()
-        self.__tick = 0
-        self.__imageIndex = 0
+        self.plane_images = []
+        self._load_image()
+        self.tick_count = 0
+        self.image_index = 0
 
-    def __load_image(self):
-        planeImgNames = ['./img/airplain01.png', './img/airplain02.png']
-        self.planeImages = [pygame.image.load(name) for name in planeImgNames]
+    def _load_image(self):
+        plane_img_names = ['./img/airplain01.png', './img/airplain02.png']
+        self.plane_images = [pygame.image.load(name) for name in plane_img_names]
 
     def draw(self):
-        self.canvas.blit(self.planeImages[self.__imageIndex], (self.plane.x, self.plane.y))
+        self.canvas.blit(self.plane_images[self.image_index], (self.plane.x, self.plane.y))
 
     def tick(self):
-        self.__tick = (self.__tick + 1) % 20
-        self.__imageIndex = int(self.__tick / 10)
+        self.tick_count = (self.tick_count + 1) % 20
+        self.image_index = int(self.tick_count / 10)
