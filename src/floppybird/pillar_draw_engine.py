@@ -11,7 +11,7 @@ class PillarDrawEngine:
 
     def _load_image(self):
         pillar_img_names = ['./img/tile01.png', './img/tile02.png', './img/tile03.png']
-        food_img_names = ['./img/hamburg.png']
+        food_img_names = ['./img/coin.png', './img/shield.png', './img/red_bottle.png', './img/pink_bottle.png']
         self.pillar_images = [pygame.image.load(name) for name in pillar_img_names]
         self.food_images = [pygame.image.load(name) for name in food_img_names]
 
