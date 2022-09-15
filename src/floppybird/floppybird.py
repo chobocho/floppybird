@@ -15,7 +15,7 @@ def main():
     canvas, fps_clock = initGame()
     floppy_bird = PaperPlane(canvas, high_score)
 
-    version = 'Floppybird ver VI8.2'
+    version = 'Floppybird ver VI9'
     pygame.display.set_caption(version)
     while True:
         for event in pygame.event.get():
@@ -23,7 +23,7 @@ def main():
                 pygame.quit()
                 return
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE or event.key == pygame.K_j:
                     floppy_bird.use_energy()
                     floppy_bird.move_up()
                 elif event.key == pygame.K_p:

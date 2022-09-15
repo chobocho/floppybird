@@ -24,6 +24,8 @@ class DrawEngine:
         self.background[4] = pygame.image.load('./img/background05.png')
         self.background[5] = pygame.image.load('./img/background06.png')
         self.start_image = pygame.image.load('./img/start.png')
+        self.energy_image = pygame.image.load('./img/bar.png')
+        self.energy_image = pygame.transform.scale(self.energy_image, (204, 30))
 
     def _draw_background(self, score=0):
         if score > 0:
@@ -36,10 +38,12 @@ class DrawEngine:
         self.canvas.blit(score_image, (680, 10))
 
     def _draw_energy(self):
-        color_table = ((0, 0, 255), (255, 0, 0))
-        color_table_idx = 0 if self.parent.get_energy() > 80 else 1
-        energy_image = self.sysfont.render(f"Energy: {self.parent.get_energy()}".zfill(3), True, color_table[color_table_idx])
-        self.canvas.blit(energy_image, (500, 10))
+        energy = self.parent.plane.get_energy() * 2
+        startX = 790 - 204
+        startY = 10
+        height = 30
+        self.canvas.blit(self.energy_image, (startX, startY))
+        pygame.draw.rect(self.canvas, (0, 0, 0), (startX + 2 + 200 - (200 - energy), startY + 2, 200-energy, height-4))
 
     def _draw_message(self):
         font_color = (200, 200, 200)
@@ -54,8 +58,8 @@ class DrawEngine:
         for engine in self.engine_list:
             engine.draw()
         self._draw_message()
-        self._draw_score()
         self._draw_energy()
+        self._draw_score()
 
     def draw_start_button(self):
         self.draw()
